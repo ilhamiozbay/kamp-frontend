@@ -34,7 +34,7 @@ export class ProductAddComponent implements OnInit {
       this.productService.add(productModel).subscribe(response => {
         this.toastrService.success(response.message, "Başarılı");
       }, responseError => {
-        if(responseError.error.Errors.length > 0){
+        if(responseError.error.Errors && responseError.error.Errors.length > 0){
             // console.log(responseError.error.Errors);
             responseError.error.Errors.forEach((element:any) => {
               this.toastrService.error(element.PropertyName+": "+element.ErrorMessage,"Doğrulama hatası");
